@@ -1,3 +1,5 @@
+"use client"
+import { useRef } from "react"
 import Image from "next/image"
 import localFont from "next/font/local"
 
@@ -31,8 +33,41 @@ const songs = [
 ]
 
 export default function Home() {
+  const confettiRef = useRef(null)
+
+  const handleMouseMove = (event) => {
+    if (!confettiRef.current) return
+
+    for (let i = 0; i < 3; i++) {
+      const container = confettiRef.current
+      const confetti = document.createElement("div")
+      confetti.classList.add("confetti")
+      container.appendChild(confetti)
+
+      const randomX = Math.floor(Math.random() * 30)
+      const randomY = Math.floor(Math.random() * 30)
+      console.log(event)
+      confetti.style.position = "absolute"
+      confetti.style.left = `${event.pageX + randomX}px`
+      confetti.style.top = `${event.pageY + randomY}px`
+
+      const randomColor = Math.floor(Math.random() * 256)
+      confetti.style.backgroundColor = `rgb(255, 255, ${randomColor})`
+
+      setTimeout(() => {
+        if (confetti.parentNode) {
+          container.removeChild(confetti)
+        }
+      }, 500)
+    }
+  }
+
   return (
-    <div className='w-screen p-8 flex justify-center'>
+    <div
+      ref={confettiRef}
+      className='w-screen p-8 flex justify-center relative'
+      onMouseMove={handleMouseMove}
+    >
       <main className='w-full md:w-[820px] bg-stone-800 pixel-border flex flex-col items-center'>
         <div className='bg-[#d6dd70] stripes w-full md:h-40 flex flex-col md:flex-row justify-between items-center'>
           <div>
@@ -193,11 +228,17 @@ export default function Home() {
             </div>
             <div className='flex gap-3 justify-between h-full'>
               <div className='pixel-border bg-orange-500 p-5  w-full h-full flex flex-col justify-center items-center'>
-                <span className={`${ClimateCrisis.className} text-white text-xl`}>
+                <span
+                  className={`${ClimateCrisis.className} text-white text-xl`}
+                >
                   Join Wifi
                 </span>
-                <span className={`${ComicNeue.className} font-bold`}>username</span>
-                <span className={`${ComicNeue.className} font-bold`}>password</span>
+                <span className={`${ComicNeue.className} font-bold`}>
+                  username
+                </span>
+                <span className={`${ComicNeue.className} font-bold`}>
+                  password
+                </span>
               </div>
               <div className='pixel-border bg-emerald-500 p-5  w-full h-full flex justify-center items-center'>
                 <Image
