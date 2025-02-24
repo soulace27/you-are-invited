@@ -17,10 +17,23 @@ const Nabla = localFont({
   src: "../../public/fonts/Nabla/Nabla-Regular-VariableFont_EDPT,EHLT.ttf",
 })
 
+const ComicNeue = localFont({
+  src: "../../public/fonts/Comic_Neue/ComicNeue-Regular.ttf",
+})
+
+const songs = [
+  "I Gotta Feeling",
+  "APT.",
+  "On The Floor (Radio Edit)",
+  "We Found Love",
+  "Calm Down",
+  "Middle",
+]
+
 export default function Home() {
   return (
     <div className='w-screen p-8 flex justify-center'>
-      <main className='w-full md:w-[820px] bg-stone-800 pixel-border'>
+      <main className='w-full md:w-[820px] bg-stone-800 pixel-border flex flex-col items-center'>
         <div className='bg-[#d6dd70] stripes w-full md:h-40 flex flex-col md:flex-row justify-between items-center'>
           <div>
             <Image src='/girl.png' width='150' height='150' alt='' />
@@ -50,8 +63,8 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className='grid md:grid-cols-[1fr_3fr_1fr] gap-3 m-3 w-full'>
-          <div className='bg-[#f4ebd0] relative p-5 pixel-border  flex flex-col justify-center items-center'>
+        <div className='grid md:grid-cols-[1fr_2fr_1fr] gap-3 p-3'>
+          <div className='bg-[#f4ebd0] relative p-5 pixel-border flex flex-col justify-center items-center'>
             <Image
               src='/capsules.png'
               className='absolute top-0 z-0'
@@ -78,7 +91,7 @@ export default function Home() {
             >
               Homecooked
             </h2>
-            <div className='flex justify-between w-full'>
+            <div className='flex justify-between'>
               <div className='rounded-md bg-gradient-to-br from-yellow-100 to-yellow-400 border-yellow-600 border-4 drop-shadow-md'>
                 <Image
                   src='/pizza.png'
@@ -119,7 +132,7 @@ export default function Home() {
               Strawberry Vanilla Cake
             </div>
           </div>
-          <div className=' pixel-border relative bg-gradient-to-b from-blue-500 to-sky-400 flex flex-col justify-center items-center'>
+          <div className='p-2 pixel-border relative bg-gradient-to-b from-blue-500 to-sky-400 flex flex-col justify-center items-center'>
             <Image
               src='/sun.png'
               alt='Sun'
@@ -141,13 +154,6 @@ export default function Home() {
               height={130}
               className='absolute right-3 top-8 z-0'
             />
-            <Image
-              src='/building.png'
-              alt='Building'
-              width={130}
-              height={130}
-              className='w-full absolute bottom-0 z-0'
-            />
             <div className='bg-white pixel-border z-10 flex flex-col justify-center items-center p-3'>
               <h2
                 className={`${ClimateCrisis.className} text-sky-200 uppercase text-2xl pixel-text`}
@@ -156,6 +162,13 @@ export default function Home() {
               </h2>
               <span className={`${Honk.className} text-2xl`}>8 PM</span>
             </div>
+            <Image
+              src='/building.png'
+              alt='Building'
+              width={130}
+              height={130}
+              className='h-56 w-auto md:w-full md:absolute bottom-0 z-0'
+            />
           </div>
           <div className=' flex flex-col gap-3'>
             <div className='row-span-1 pixel-border  h-full p-5 bg-cyan-300 flex justify-between items-center'>
@@ -179,12 +192,12 @@ export default function Home() {
               </div>
             </div>
             <div className='flex gap-3 justify-between h-full'>
-              <div className='pixel-border bg-orange-500 p-5  w-full h-full'>
-                <button className='bg-blue-400 hover:bg-blue-500 pixel-border rounded-full px-3 py-1 mt-5'>
-                  <span className={`${Honk.className} text-black text-xl`}>
-                    Join Wifi
-                  </span>
-                </button>
+              <div className='pixel-border bg-orange-500 p-5  w-full h-full flex flex-col justify-center items-center'>
+                <span className={`${ClimateCrisis.className} text-white text-xl`}>
+                  Join Wifi
+                </span>
+                <span className={`${ComicNeue.className} font-bold`}>username</span>
+                <span className={`${ComicNeue.className} font-bold`}>password</span>
               </div>
               <div className='pixel-border bg-emerald-500 p-5  w-full h-full flex justify-center items-center'>
                 <Image
@@ -192,69 +205,55 @@ export default function Home() {
                   width='150'
                   height='150'
                   alt='RSVP'
-                  className='w-fit bounce'
+                  className='w-fit bounce cursor-pointer'
                 />
               </div>
             </div>
           </div>
-          <div className='bg-yellow-200  pixel-border p-2 w-full'>
+          <div className='bg-yellow-200 pixel-border p-2'>
             <div className='bg-yellow-400 pixel-border p-2 flex flex-col justify-center items-center'>
               <h3
                 className={`${ClimateCrisis.className} uppercase text-3xl pixel-text`}
               >
                 YouTube
               </h3>
-              <span className={`${Micro5.className} text-black text-xl`}>
+              <span
+                className={`${ComicNeue.className} text-black text-center font-bold text-sm`}
+              >
                 Add your favourite party songs!
               </span>
-              <div className='h-[200px] overflow-y-scroll flex flex-col gap-2 old-scrollbar w-full p-2'>
-                <div className='bg-stone-400 pixel-border px-3 py-1'>
-                  <span className={`${Micro5.className} text-black text-xl`}>
-                    I Gotta Feeling
-                  </span>
-                </div>
-                <div className='bg-stone-400 pixel-border pixel-border px-3 py-1'>
-                  <span className={`${Micro5.className} text-black text-xl`}>
-                    APT.
-                  </span>
-                </div>
-                <div className='bg-stone-400 pixel-border pixel-border px-3 py-1'>
-                  <span className={`${Micro5.className} text-black text-xl`}>
-                    On The Floor (Radio Edit)
-                  </span>
-                </div>
-                <div className='bg-stone-400 pixel-border px-3 py-1'>
-                  <span className={`${Micro5.className} text-black text-xl`}>
-                    We Found Love
-                  </span>
-                </div>
-                <div className='bg-stone-400 pixel-border px-3 py-1'>
-                  <span className={`${Micro5.className} text-black text-xl`}>
-                    Calm Down
-                  </span>
-                </div>
-                <div className='bg-stone-400 pixel-border px-3 py-1'>
-                  <span className={`${Micro5.className} text-black text-xl`}>
-                    Middle
-                  </span>
-                </div>
+              <div className='h-[200px] overflow-y-scroll flex flex-col gap-2 old-scrollbar p-2'>
+                {songs.map((song, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className='bg-stone-400 pixel-border px-3 py-1'
+                    >
+                      <span
+                        className={`${Micro5.className} text-black text-xl`}
+                      >
+                        {song}
+                      </span>
+                    </div>
+                  )
+                })}
               </div>
 
               <a
                 href=''
-                className={`text-blue-500 text-black text-lg underline`}
+                className={`text-blue-500 ${ComicNeue.className} font-bold text-lg underline`}
               >
                 Join Playlist
               </a>
             </div>
           </div>
-          <div className={`h-80 relative`}>
+          <div className={`h-80 relative flex`}>
             <Image
               alt='friends'
               src='/see-you-soon.gif'
               width={100}
               height={100}
-              className='absolute z-0 w-full bottom-0'
+              className='md:absolute z-0 h-full w-auto md:w-full md:h-auto bottom-0'
             ></Image>
             <h3
               className={`${ClimateCrisis.className} z-10 text-center uppercase text-fuchsia-300 p-5 text-3xl pixel-text`}
@@ -269,7 +268,7 @@ export default function Home() {
               Coming Soon...
             </h3>
           </div>
-          <div className='pixel-border p-5 bg-pink-300  h-full flex flex-col justify-center items-center'>
+          <div className='pixel-border p-5 bg-pink-300 h-full flex flex-col justify-center items-center'>
             <h3
               className={`${Nabla.className} uppercase text-lime-500 text-3xl pixel-text`}
             >
